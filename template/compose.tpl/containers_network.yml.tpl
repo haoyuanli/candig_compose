@@ -1,17 +1,7 @@
 version: '3.3'
 services:
-  tyk-dashboard:
-    image: tykio/tyk-dashboard:v1.8.5
-    ports:
-    - "3000:3000"
-    - "5000:5000"
-    networks:
-    - tyk
-    depends_on:
-    - tyk-redis
-    - tyk-mongo
   candig:
-    image: tykio/tyk-gateway:v2.8.4
+    image: tykio/tyk-gateway:v2.9.3
     ports:
     - "${TYK_GATW_LOCAL_PORT}:8080"
     networks:
@@ -27,9 +17,7 @@ services:
     - tyk-mongo
     - candig
   tyk-redis:
-    image: redis:4.0.11-stretch
-    ports:
-    - "6379:6379"
+    image: redis:4.0.14-alpine
     volumes:
     - redis-data:/data
     networks:
@@ -37,8 +25,6 @@ services:
   tyk-mongo:
     image: mongo:3.2
     command: ["mongod", "--smallfiles"]
-    ports:
-    - "27017:27017"
     volumes:
     - mongo-data:/data/db
     networks:
