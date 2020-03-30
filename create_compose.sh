@@ -93,11 +93,12 @@ echo -e "${KC_PUBLIC_URL}${KC_PUB_PORT}/auth/realms/${KC_REALM}\t${KC_TEST_USER}
 
 echo Done
 
-mkdir -p ./yml/
-
 echo Creating the Candig compose yml
- cat ${INPUT_TEMPLATE_DIR}/compose.tpl/volumes.yml.tpl | envsubst > ./yml/volumes.yml
- cat ${INPUT_TEMPLATE_DIR}/compose.tpl/containers_network.yml.tpl | envsubst > ./yml/containers_network.yml
+ cat ${INPUT_TEMPLATE_DIR}/docker-compose.yml.tpl | envsubst > ./docker-compose.yml
+
+echo Creating data dir $DATA_DIR
+mkdir -p $DATA_DIR/keycloak-db
+mkdir -p $DATA_DIR/main_server
 
 
  echo Done

@@ -5,8 +5,12 @@
 # Directory to store the configuration
 export OUPTUT_CONFIGURATION_DIR=/tmp/candig_conf
 
-##  This should be a good key!
-export SECRET_KEY=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+# directory to keep permanent data
+export DATA_DIR=~/home/candig_data
+
+##  This should be a good key:
+## cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
+export SECRET_KEY=GENERATE_A_NEW_KEY_jfksljrk32kwrl
 
 # You will be able to log this user and have acces to a test dataset
 export KC_TEST_USER=a_user
@@ -57,6 +61,9 @@ export LOCAL_TYK_CONFIG_PATH=${OUPTUT_CONFIGURATION_DIR}/tyk/confs
 export LOCAL_KC_CONFIG_PATH=${OUPTUT_CONFIGURATION_DIR}/keycloak/configuration
 export LOCAL_CANDIG_CONFIG_PATH=${OUPTUT_CONFIGURATION_DIR}/candig_server
 
+# Docker-compose naming
+export CONTAINER_NAME_CANDIG_GATEWAY=candig
+export CONTAINER_NAME_CANDIG_AUTH=candig_auth
 
 # Do not touch, this is the adress seen by tyk (in compose its the name)
 export LOCAL_CANDIG_SERVER="http://candig_server:80"
