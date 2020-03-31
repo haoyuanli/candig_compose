@@ -58,6 +58,10 @@ KC_PUB_PORT=:${KC_PUBLIC_PORT}
 KC_PUB_PORT=${KC_PUB_PORT%:80}
 export KC_PUB_PORT=${KC_PUB_PORT%:443}
 
+# Docker-compose naming
+export CONTAINER_NAME_CANDIG_GATEWAY=candig
+export CONTAINER_NAME_CANDIG_AUTH=candigauth
+export DATA_DIR=$HOME/data
 
 CANDIG_HOST_NAME="${CANDIG_PUBLIC_URL#http://}"
 export CANDIG_HOST_NAME="${CANDIG_HOST_NAME=#https://}"
